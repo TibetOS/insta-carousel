@@ -151,20 +151,20 @@ export function useCanvasSync(canvasRef: RefObject<Canvas | null>) {
       lastTapTime = now;
     };
 
-    canvas.on('object:modified', onModified as any);
-    canvas.on('text:changed', onTextChanged as any);
-    canvas.on('selection:created', onSelectionCreated as any);
-    canvas.on('selection:updated', onSelectionCreated as any);
+    canvas.on('object:modified', onModified);
+    canvas.on('text:changed', onTextChanged);
+    canvas.on('selection:created', onSelectionCreated);
+    canvas.on('selection:updated', onSelectionCreated);
     canvas.on('selection:cleared', onSelectionCleared);
-    canvas.on('mouse:down', onMouseDown as any);
+    canvas.on('mouse:down', onMouseDown);
 
     return () => {
-      canvas.off('object:modified', onModified as any);
-      canvas.off('text:changed', onTextChanged as any);
-      canvas.off('selection:created', onSelectionCreated as any);
-      canvas.off('selection:updated', onSelectionCreated as any);
+      canvas.off('object:modified', onModified);
+      canvas.off('text:changed', onTextChanged);
+      canvas.off('selection:created', onSelectionCreated);
+      canvas.off('selection:updated', onSelectionCreated);
       canvas.off('selection:cleared', onSelectionCleared);
-      canvas.off('mouse:down', onMouseDown as any);
+      canvas.off('mouse:down', onMouseDown);
     };
   }, [canvasRef]);
 

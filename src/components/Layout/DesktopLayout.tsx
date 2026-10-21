@@ -7,7 +7,7 @@ import { PropertiesPanel } from '../Properties/PropertiesPanel';
 import { useCarouselStore, generateId } from '../../store/useCarouselStore';
 import { normalizeImage } from '../../utils/exif';
 import { addFile } from '../../store/fileCache';
-import { useToast } from '../ui/Toast';
+import { useToast } from '../ui/toastContext';
 import type { TextElement, ShapeElement, ImageElement, ViewMode } from '../../types';
 
 interface DesktopLayoutProps {

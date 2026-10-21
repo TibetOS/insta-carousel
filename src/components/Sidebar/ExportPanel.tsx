@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { useCarouselStore } from '../../store/useCarouselStore';
 import { exportSlides } from '../../utils/export';
-import { useToast } from '../ui/Toast';
+import { useToast } from '../ui/toastContext';
 
 export function ExportPanel() {
   const slides = useCarouselStore(s => s.slides);

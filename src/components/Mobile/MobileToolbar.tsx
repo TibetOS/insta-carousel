@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useCarouselStore, generateId } from '../../store/useCarouselStore';
-import { useToast } from '../ui/Toast';
+import { useToast } from '../ui/toastContext';
 import { normalizeImage } from '../../utils/exif';
 import { addFile } from '../../store/fileCache';
 import type { TextElement, ImageElement } from '../../types';
