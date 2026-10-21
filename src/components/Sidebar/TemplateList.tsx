@@ -1,5 +1,6 @@
 import { templates } from '../../templates';
 import { useCarouselStore } from '../../store/useCarouselStore';
+import type { TextElement } from '../../types';
 
 interface TemplateListProps {
   onSelect?: () => void;
@@ -24,7 +25,7 @@ export function TemplateList({ onSelect }: TemplateListProps) {
       aspectRatio: template.aspectRatio,
       activeSlideId: slides[0].id,
       selectedElementId: null,
-    } as any);
+    });
     setActiveSlide(slides[0].id);
     onSelect?.();
   };
@@ -41,7 +42,7 @@ export function TemplateList({ onSelect }: TemplateListProps) {
           >
             <div
               className="w-full h-full flex items-center justify-center text-xs font-medium"
-              style={{ backgroundColor: template.slides[0]?.backgroundColor || '#eee', color: template.slides[0]?.elements[0]?.type === 'text' ? (template.slides[0].elements[0] as any).fill : '#fff' }}
+              style={{ backgroundColor: template.slides[0]?.backgroundColor || '#eee', color: template.slides[0]?.elements[0]?.type === 'text' ? (template.slides[0].elements[0] as TextElement).fill : '#fff' }}
             >
               {template.name}
             </div>

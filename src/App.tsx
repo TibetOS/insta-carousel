@@ -2,7 +2,8 @@ import { useEffect, useState, useCallback, type ErrorInfo, type ReactNode, Compo
 import { useViewport } from './hooks/useViewport';
 import { DesktopLayout } from './components/Layout/DesktopLayout';
 import { MobileLayout } from './components/Layout/MobileLayout';
-import { ToastProvider, useToast } from './components/ui/Toast';
+import { ToastProvider } from './components/ui/Toast';
+import { useToast } from './components/ui/toastContext';
 import { useCarouselStore, generateId } from './store/useCarouselStore';
 import { loadState, debouncedSave, forceSave } from './utils/persistence';
 import { loadTier1Fonts } from './utils/fonts';
@@ -69,7 +70,7 @@ function AppContent() {
     if (restore) {
       loadState().then(saved => {
         if (saved) {
-          useCarouselStore.getState().loadState(saved as any);
+          useCarouselStore.getState().loadState(saved);
         }
         setRestored(true);
         setShowPrompt(false);

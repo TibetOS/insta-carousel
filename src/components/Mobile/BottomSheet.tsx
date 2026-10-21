@@ -19,15 +19,19 @@ export function BottomSheet() {
   const dragStartY = useRef<number | null>(null);
   const sheetRef = useRef<HTMLDivElement>(null);
 
-  // Auto-expand on selection
-  useEffect(() => {
+  // Auto-expand on selection. Adjusted while rendering when the selection changes
+  // (https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes).
+  // Starts at null so an element already selected on mount still expands the sheet.
+  const [prevSelectedElementId, setPrevSelectedElementId] = useState<string | null>(null);
+  if (selectedElementId !== prevSelectedElementId) {
+    setPrevSelectedElementId(selectedElementId);
     if (selectedElementId) {
       setState('half');
       setTab('properties');
     } else if (state === 'half') {
       setState('collapsed');
     }
-  }, [selectedElementId]);
+  }
 
   // Virtual keyboard handling
   useEffect(() => {
