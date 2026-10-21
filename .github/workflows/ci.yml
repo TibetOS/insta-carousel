@@ -14,15 +14,18 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 24
-          cache: npm
 
-      - run: npm ci
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: package.json
+
+      - run: bun install --frozen-lockfile
 
       - name: Type check
-        run: npx tsc --noEmit
+        run: bunx tsc --noEmit
 
       - name: Build
-        run: npm run build
+        run: bun run build
 
       - name: Check bundle size
         run: |
